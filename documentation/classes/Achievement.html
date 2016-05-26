@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+    <head>
+        <title>Class Documentation</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&amp;subset=latin,latin-ext" type="text/css">
+        <link rel="stylesheet" href="../resources/API.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="../resources/doc.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="../resources/class.css" type="text/css" media="screen" />
+
+        <script type='text/javascript' src="../resources/jquery-min.js"></script>
+    </head>
+    
+    <body>
+
+        <div class='contentDiv'>
+<div id='mainTitle'>Achievement Class</div><table id='searchTable'><tr><td><input id='searchInput' type='text' placeholder='Search Class' /></td></tr></table><table id='classTable'><tr class='groupRow'><td colspan=5><div class='groupDiv'>Class Functions</div></td></tr><tr id='allAchievementsForUser'><td class='nameCell'><span class='nameSpanStatic'>allAchievementsForUser</span></td><td class='disclosureCell'><div class='functionDisclosure disclosureClosed disclosureMinor' data-functionname='allAchievementsForUser'></div></td><td class='functionPrivateCell'></td><td></td></tr><tr id='allAchievementsForUser_description' class='descriptionRow'><td class='functionDescription' colspan=3><table class='detailTable'><tr><td colspan=2><table class='argumentTable'><tr><td class='argumentNameCell'><div class='argumentDiv'>user</div></td><td class='argumentTypeCell'><a href='./User'>User</a></td><td class='argumentValueCell'></td></tr></table></td></tr><tr><td colspan=2><section class='divider methodDescriptionDivider'></section></td></tr><tr><td colspan=2 class='descriptionCell'>Returns all the achievements for <b>user</b>.</td></tr><tr><td colspan=2><section class='divider methodDescriptionDivider'></section></td></tr></table></td></tr><tr id='A'><td class='nameCell'><span class='nameSpanStatic'>A</span></td><td class='disclosureCell'><div class='functionDisclosure disclosureClosed disclosureMinor' data-functionname='A'></div></td><td class='functionPrivateCell'></td><td></td></tr><tr id='A_description' class='descriptionRow'><td class='functionDescription' colspan=3><table class='detailTable'><tr><td colspan=2><table class='argumentTable'><tr><td class='argumentNameCell'><div class='argumentDiv'>type</div></td><td class='argumentTypeCell'>An <a href='./Achievement'>Achievement</a> type string.</td><td class='argumentValueCell'></td></tr><tr><td class='argumentNameCell'><div class='argumentDiv'>user</div></td><td class='argumentTypeCell'><a href='./User'>User</a></td><td class='argumentValueCell'></td></tr></table></td></tr><tr><td colspan=2><section class='divider methodDescriptionDivider'></section></td></tr><tr><td colspan=2 class='descriptionCell'>Returns the achievement of <b>type</b> for <b>user</b>.</td></tr><tr><td colspan=2><section class='divider methodDescriptionDivider'></section></td></tr></table></td></tr><tr class='groupRow'><td colspan=5><div class='groupDiv'>Status</div></td></tr><tr id='status'><td class='nameCell'><span class='nameSpan'>status</span></td><td class='disclosureCell'><div class='functionDisclosure disclosureClosed disclosureMinor' data-functionname='status'></div></td><td class='functionPrivateCell'></td><td></td></tr><tr id='status_description' class='descriptionRow'><td class='functionDescription' colspan=3><table class='detailTable'><tr><td colspan=2><section class='divider methodDescriptionDivider'></section></td></tr><tr><td colspan=2 class='descriptionCell'>Returns the progress of the achievment if set and the unlocked status otherwise.</td></tr><tr><td colspan=2><section class='divider methodDescriptionDivider'></section></td></tr></table></td></tr><tr id='unlockRequirement'><td class='nameCell'><span class='nameSpan'>unlockRequirement</span></td><td class='disclosureCell'><div class='functionDisclosure disclosureClosed disclosureMinor' data-functionname='unlockRequirement'></div></td><td class='functionPrivateCell'></td><td></td></tr><tr id='unlockRequirement_description' class='descriptionRow'><td class='functionDescription' colspan=3><table class='detailTable'><tr><td colspan=2><section class='divider methodDescriptionDivider'></section></td></tr><tr><td colspan=2 class='descriptionCell'>Returns the value needed for unlocking.</td></tr><tr><td colspan=2><section class='divider methodDescriptionDivider'></section></td></tr></table></td></tr><tr id='isUnlocked'><td class='nameCell'><span class='nameSpan'>isUnlocked</span></td><td class='disclosureCell'><div class='functionDisclosure disclosureClosed disclosureMinor' data-functionname='isUnlocked'></div></td><td class='functionPrivateCell'></td><td></td></tr><tr id='isUnlocked_description' class='descriptionRow'><td class='functionDescription' colspan=3><table class='detailTable'><tr><td colspan=2><section class='divider methodDescriptionDivider'></section></td></tr><tr><td colspan=2 class='descriptionCell'>Returns whether the achievement has been unlocked or not.</td></tr><tr><td colspan=2><section class='divider methodDescriptionDivider'></section></td></tr></table></td></tr></table>        </div>
+
+        <script type="text/javascript">
+
+            jQuery(".functionDisclosure").click( function()
+            {
+                var thisEl = jQuery( this );
+
+                if( this.className != 'disclosureLoading' )
+                {
+                    var descriptionRow = jQuery( "#" + jQuery(this).attr('data-functionname') + "_description" );
+
+                    if( thisEl.hasClass('disclosureOpen') )
+                    {
+                        descriptionRow.hide();
+                        thisEl.removeClass( 'disclosureOpen' ).addClass( 'disclosureClosed' );
+                    }
+                    else if( thisEl.hasClass('disclosureClosed') )
+                    {
+                        descriptionRow.show();
+                        thisEl.removeClass( 'disclosureClosed' ).addClass( 'disclosureOpen' );
+                    }
+                }
+            });
+
+            function performSearch()
+            {
+                var ss = jQuery("#searchInput").val().toLowerCase();
+                if( ss != "" )
+                {
+                    jQuery("#apiTable .disclosureOpen").click();
+
+                    var results = jQuery('.nameSpan, .nameSpanStatic').filter( function()
+                    {
+                        var theSpan = jQuery(this);
+                        var cs = theSpan.text().toLowerCase();
+                        if( cs.indexOf(ss) > -1 ){ return true; }
+                        return false;
+                    } );
+
+            //        console.log(results);
+
+                    results.each( function()
+                    {
+                        var thisRes = jQuery(this);
+
+                        thisRes.addClass("searchResultHighlight");
+                    } );
+
+                }
+            }
+
+            jQuery("#searchInput").keydown( function( e )
+            {
+                jQuery(".searchResultHighlight").removeClass("searchResultHighlight");
+                if( e.which == 13 ){ performSearch(); }
+            } );
+
+
+        </script>
+
+    </body>
+</html>

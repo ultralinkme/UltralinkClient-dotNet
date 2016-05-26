@@ -1,0 +1,88 @@
+
+.contentDiv { max-width: 1200px; margin: auto; }
+
+.classDivider
+{
+    margin-bottom: 10px;
+    margin-top:    10px;
+}
+
+#classDocTable
+{
+    border-spacing: 6px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-left:  20px;
+    margin-right: 20px;
+}
+
+.classCell
+{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.classLowerCell
+{
+    font-weight: bold;
+    font-size: 20px;
+    padding-left: 30px;
+}
+
+.classLink
+{
+    text-decoration: none;
+    color: #5D97CA;
+}
+
+.classDescriptionCell
+{
+    padding-left: 15px;
+}
+
+#noAccess
+{
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+@media only screen and (max-width : 1240px)
+{
+    #classDocTable
+    {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media only screen and (max-width : 800px)
+{
+    .classCell, .classLowerCell { font-size: 18px; }
+    .classDescriptionCell { font-size: 14px; }
+}
+
+@media only screen and (max-width : 600px)
+{
+    .classCell, .classLowerCell { font-size: 16px; }
+    .classDescriptionCell { font-size: 12px; }
+    .classLowerCell { padding-left: 20px; }
+}
+
+@media only screen and (max-width : 500px)
+{
+    .classCell, .classLowerCell { font-size: 14px; }
+    .classDescriptionCell { font-size: 10px; }
+
+    #classDocTable { padding-left: 15px; padding-right: 15px; }
+    .classLowerCell { padding-left: 15px; }
+}
+
+@media only screen and (max-width : 400px)
+{
+    .classCell, .classLowerCell { font-size: 14px; }
+    .classDescriptionCell { font-size: 10px; }
+
+    #classDocTable { padding-left: 10px; padding-right: 10px; }
+    .classLowerCell { padding-left: 10px; }
+}

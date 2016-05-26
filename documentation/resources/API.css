@@ -1,0 +1,562 @@
+
+
+#apiTable
+{
+    width: 100%;
+    padding-left:  10px;
+    padding-right: 10px;
+}
+
+.endpointRow
+{
+
+}
+
+.endpointCell
+{
+
+}
+
+.endpointDiv
+{
+    font-weight: bold;
+    color: rgb(100,100,100);
+}
+
+.endpointNameDivMajor, .endpointNameDivMinor
+{
+    font-weight: bold;
+}
+
+.endpointNameDivMajor
+{
+    font-size: 24px;
+}
+
+.endpointNameDivMinor
+{
+    font-size: 18px;
+}
+
+.endpointTable
+{
+    margin-left: 20px;
+    margin-top: 5px;
+}
+
+.commandRow
+{
+
+}
+
+.commandCell { width: 1px; }
+
+.commandDiv, .argumentDiv, .optionalArgumentDiv
+{
+    font-weight: bold;
+}
+
+/*.commandDiv         { color: rgb(  95, 172, 236); font-weight: bold; }*/
+.commandDiv         { color: rgb(   0,  96, 176); font-weight: bold; }
+.argumentDiv        { color: rgb(   0,  96, 176); font-weight: bold; }
+.optionalArgumentDiv{ color: rgb(   0,  96, 176); font-weight: normal; }
+
+.endpointDetailRow, .commandDetailRow
+{
+    display: none;
+}
+
+.commandAuth
+{
+
+}
+
+.commandDescription
+{
+    font-size: 14px;
+}
+
+.databaseIdentifier, .ultralinkIdentifier, .jobIdentifier, .userIdentifier, .notificationIdentifier, .serviceIdentifier
+{
+    font-weight: bold;
+    font-family: 'Open Sans';
+}
+
+.userIdentifier         { color: purple;         }
+.databaseIdentifier     { color: rgb(200,52,52); }
+.ultralinkIdentifier    { color: rgb(89,97,184); }
+.jobIdentifier          { color: rgb(36,129,36); }
+.notificationIdentifier { color: #8B9841;        }
+.serviceIdentifier      { color: #B58423;        }
+
+.endpointDisclosure, .commandDisclosure, .executeDisclosure, .endpointContentDisclosure
+{
+    width:  16px !important;
+    height: 16px !important;
+}
+
+.executeDisclosure
+{
+    display: inline-block;
+    margin-left: 7px;
+    margin-bottom: -8px;
+}
+
+.authCell
+{
+    width: 1px;
+}
+
+.typeCell
+{
+    width: 1px;
+}
+
+.apiOpenDiv, .apiOptionalDiv, .apiContributorDiv, .apiEditorDiv, .apiAdminDiv, .apiRootDiv, .apiNodeDiv
+{
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    padding: 0px 8px 2px 8px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
+    width: 64px;
+    margin-right: 6px;
+}
+
+.apiOpenDiv        { background: lightgray;          }
+.apiOptionalDiv    { background: gray;               }
+.apiContributorDiv { background: rgb(226, 212,  64); }
+.apiEditorDiv      { background: rgb(242, 168,  69); }
+.apiAdminDiv       { background: rgb(255,  77,  77); }
+.apiRootDiv        { background: rgb(255,  77, 239); }
+.apiNodeDiv        { background: rgb(  0,   0,   0); }
+
+.disclosureMajor { margin-top: 4px; }
+.disclosureMinor { margin-top: 2px; }
+
+.commandNameCell {  }
+.disclosureCell { width: 1px; }
+
+.parameterDetailCell
+{
+    font-style: italic;
+    font-size: 12px;
+    padding-top: 3px;
+    padding-left: 5px;
+    white-space: nowrap;
+}
+
+.commandDetailDivider
+{
+    margin-top: 15px;
+}
+
+.summaryCell
+{
+    padding-left: 20px;
+}
+
+.groupRow
+{
+
+}
+
+.groupDiv
+{
+    font-size: 17px;
+    font-weight: bold;
+    margin-left: 25px;
+    margin-top: 5px;
+}
+
+.commandPrivateCell
+{
+    
+}
+
+.commandPrivateDiv
+{
+    color: red;
+    font-size: 11px;
+    margin-top: 1px;
+    margin-left: 3px;
+}
+
+.fullPath, .fullPathInput
+{
+    font-family: monaco;
+    font-size: 10px;
+    background-color: #E2E2E2;
+    padding: 7px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+}
+
+.fullPathInput
+{
+    display: none;
+}
+
+.fullPathCell
+{
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.fullPathEndpointCell
+{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.executeParameterName
+{
+    margin-right: 5px;
+}
+
+.executeParameterTable
+{
+    display: none;
+    font-family: 'Open Sans';
+    font-size: 11px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.executeButton, .executeParametersButton
+{
+    display: none;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.executeButton           { margin-top: 15px; }
+.executeParametersButton { margin-top: 10px; }
+
+.executeResult
+{
+    display: none;
+    background-color: #F1F1F1;
+    margin-top: 10px;
+    font-family: monaco;
+    font-size: 11px;
+    padding: 10px;
+    word-break: break-word;
+}
+
+.executeReturn
+{
+    display: none;
+    background-color: #D6E6FD;
+    margin-top: 10px;
+    font-family: monaco;
+    font-size: 11px;
+    padding: 10px;
+    word-break: break-word;
+}
+
+.executeLoading
+{
+    width:  48px;
+    height: 48px;
+}
+
+.identifierTable, #authTable
+{
+    font-size: 14px;
+    margin: auto;
+    background-color: #F1F1F1;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    border-spacing: 4px;
+    box-sizing: border-box;
+}
+
+.identifierTable { margin-top: 20px; }
+
+.identifierCell
+{
+    padding-right: 5px;
+}
+
+.identifierCell
+{
+    width: 220px;
+    font-weight: bold;
+}
+
+.identifierLetterCell
+{
+    width: 30px;
+}
+
+.identifierDescriptionCell, .authDescriptionCell
+{
+    padding-left: 5px;
+    line-height: 24px;
+}
+
+#apiTable, .endpointContentTable, .endpointTable, .endpointCellTable, .commandRowTable { border-spacing: 3px; }
+
+.argDiv
+{
+    background: lightgrey;
+    border-radius: 10px;
+    font-weight: bold;
+    text-align: center;
+    width: 25px;
+    font-size: 11px;
+    color: white;
+    height: 16px;
+    vertical-align: middle;
+    margin-right: 3px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+    text-shadow: 0px 1px 1px rgba(0,0,0,0.25);
+    display: none;
+}
+
+.userArg         { background: purple;         }
+.databaseArg     { background: rgb(200,52,52); }
+.ultralinkArg    { background: rgb(89,97,184); }
+.jobArg          { background: rgb(36,129,36); }
+.notificationArg { background: #8B9841;        }
+.serviceArg      { background: #B58423;        }
+
+.stringArg       { background: #728AFF;        }
+.intArg          { background: #5CD660;        }
+.jsonArg         { background: #DF59F7;        }
+.urlArg          { background: #8BC0D0;        }
+.boolArg         { background: #212121;        }
+.timestampArg    { background: #DAD666;        }
+.multichoiceArg  { background: #B3B3B3;        }
+
+.categoryArg     { background: #ECB841;        }
+.connectionArg   { background: #ECEF47;        }
+.linktypeArg     { background: #7EC3B3;        }
+.wordArg         { background: #EFC0C0;        }
+.dateArg         { background: #C2CC70;        }
+.countryArg      { background: #64ECEC;        }
+.languageArg     { background: #E495B6;        }
+.emailArg        { background: #9D6DD2;        }
+
+.addressInput, .domainInput, .executeParameterInput
+{
+    margin-top:    1px;
+    margin-bottom: 1px;
+}
+
+.addressInput          { width:  70px; }
+.domainInput           { width:  80px; }
+.executeParameterInput { width: 171px; }
+.intInput              { width:  70px; }
+.timestampInput        { width:  70px; }
+
+#keyDiv
+{
+    background: #D4D4D4;
+    padding: 15px;
+    border-radius: 10px;
+    z-index: 10;
+    margin-top: 15px;
+    display: none;
+}
+
+#searchInput
+{
+    font-size: 24px;
+    padding: 5px;
+    margin-right: 40px;
+    min-width: 75%;
+    box-sizing: border-box;
+    border-style: solid;
+    border-color: #D2D2D2;
+}
+
+.searchDividerOne { margin-top: 25px; margin-bottom: 25px; }
+.searchDividerTwo { margin-top: 20px; margin-bottom: 10px; }
+
+.searchResultHighlight { text-shadow: 0 0 7px rgba(255, 0, 0, 1); }
+
+.endpointExpandRow { display: none; }
+.showOtherButton
+{
+    width: 95px !important;
+    font-weight: bold;
+    margin-left: 22px;
+    font-size: 9px !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,.35);
+    border-style: none !important;
+    color: grey;
+}
+
+.endpointContentPathRow, .endpointContentDescRow, .endpointCommandDetailRow { display: none; }
+
+#searchOptions { margin-left: 65px; }
+#onlyShowCell { font-size: 10px; padding-top: 3px; cursor: pointer; }
+
+#searchTable { width: 100%; }
+
+#keyCell { width: 30px; }
+#keyButton
+{
+    width: 30px;
+    margin-left:  10px;
+    margin-right: 10px;
+    border-radius: 3px;
+    background: lightgray;
+    font-weight: bold;
+}
+
+@media only screen and (max-width : 1000px)
+{
+    .apiOpenDiv, .apiOptionalDiv, .apiContributorDiv, .apiEditorDiv, .apiAdminDiv, .apiRootDiv, .apiNodeDiv
+    {
+        font-size: 9px;
+        padding: 0px 6px 0px 6px;
+        width: 54px;
+    }
+
+    .argDiv { font-size: 9px; width: 20px; height: 14px; }
+
+    .showOtherButton { font-size: 9px !important; width: 90px !important; margin-left: 19px !important; }
+
+    .argumentDiv, .optionalArgumentDiv, .commandDiv, .endpointDiv { font-size: 14px; }
+    .databaseIdentifier, .ultralinkIdentifier, .jobIdentifier, .userIdentifier, .notificationIdentifier, .serviceIdentifier { font-size: 12px; }
+    .commandDescription { font-size: 12px; }
+    .parameterDetailCell { font-size: 10px; }
+    .groupDiv { font-size: 15px; margin-left: 22px; }
+
+    .authCell { padding-right: 0px; }
+
+    .endpointNameDivMajor { font-size: 18px; }
+    .endpointNameDivMinor { font-size: 14px; }
+
+    .commandPrivateDiv { font-size: 9px; margin-top: 2px; }
+
+    #apiTable, .endpointContentTable, .endpointTable, .endpointCellTable, .commandRowTable { border-spacing: 2px; }
+
+    .identifierCell, .authDescriptionCell, .identifierDescriptionCell { font-size: 12px; line-height: 16px; }
+
+    .identifierCell { width: 160px; }
+
+    .endpointDisclosure, .commandDisclosure, .executeDisclosure, .endpointContentDisclosure { width: 14px !important; height: 14px !important; }
+
+    .endpointTable { margin-left: 18px; }
+}
+
+@media only screen and (max-width : 850px)
+{
+    .apiOpenDiv, .apiOptionalDiv, .apiContributorDiv, .apiEditorDiv, .apiAdminDiv, .apiRootDiv, .apiNodeDiv
+    {
+        font-size: 8px;
+        padding: 0px 2px 0px 2px;
+    }
+
+    .argDiv { font-size: 8px; width: 18px; height: 12px; }
+
+    .showOtherButton { font-size: 8px !important;  margin-left: 17px !important; }
+
+    .argumentDiv, .optionalArgumentDiv, .commandDiv, .endpointDiv { font-size: 12px; }
+    .databaseIdentifier, .ultralinkIdentifier, .jobIdentifier, .userIdentifier, .notificationIdentifier, .serviceIdentifier { font-size: 10px; }
+    .commandDescription { font-size: 10px; }
+    .parameterDetailCell { font-size: 8px; }
+    .groupDiv { font-size: 13px; margin-left: 17px; }
+
+    .endpointNameDivMajor { font-size: 16px; }
+    .endpointNameDivMinor { font-size: 12px; }
+
+    .commandPrivateDiv { font-size: 7px; margin-top: 4px; }
+
+    #apiTable, .endpointContentTable, .endpointTable, .endpointCellTable, .commandRowTable { border-spacing: 2px; }
+
+    .identifierCell, .authDescriptionCell, .identifierDescriptionCell { font-size: 10px; line-height: 14px; }
+
+    .identifierCell { width: 140px; }
+
+    .fullPath, .fullPathInput { font-size: 9px; }
+
+    .endpointDisclosure, .commandDisclosure, .executeDisclosure, .endpointContentDisclosure { width: 12px !important; height: 12px !important; }
+
+    .endpointTable { margin-left: 14px; }
+}
+
+@media only screen and (max-width : 750px)
+{
+    .apiOpenDiv, .apiOptionalDiv, .apiContributorDiv, .apiEditorDiv, .apiAdminDiv, .apiRootDiv, .apiNodeDiv
+    {
+        font-size: 6px;
+        padding: 0px 0px 0px 0px;
+        width: 42px;
+    }
+
+    .argDiv { font-size: 6px; width: 14px; height: 8px; }
+
+    .showOtherButton { font-size: 6px !important; width: 62px !important; margin-left: 13px !important; }
+
+    .argumentDiv, .optionalArgumentDiv, .commandDiv, .endpointDiv { font-size: 10px; }
+    .databaseIdentifier, .ultralinkIdentifier, .jobIdentifier, .userIdentifier, .notificationIdentifier, .serviceIdentifier { font-size: 8px; }
+    .commandDescription { font-size: 8px; }
+    .parameterDetailCell { font-size: 6px; }
+    .groupDiv { font-size: 11px;  margin-left: 12px; }
+
+    .endpointNameDivMajor { font-size: 14px; }
+    .endpointNameDivMinor { font-size: 10px; }
+
+    .commandPrivateDiv { font-size: 5px; margin-top: 3px; }
+
+    #apiTable, .endpointContentTable, .endpointTable, .endpointCellTable, .commandRowTable { border-spacing: 1px; }
+
+    .identifierCell, .authDescriptionCell, .identifierDescriptionCell { font-size: 8px; line-height: 12px; }
+
+    .identifierCell { width: 110px; }
+
+    .fullPath, .fullPathInput { font-size: 7px; }
+
+    .endpointDisclosure, .commandDisclosure, .executeDisclosure, .endpointContentDisclosure { width: 10px !important; height: 10px !important; }
+
+    #searchInput { font-size: 20px; }
+
+    .endpointTable { margin-left: 10px; }
+}
+
+@media only screen and (max-width : 650px)
+{
+    .apiOpenDiv, .apiOptionalDiv, .apiContributorDiv, .apiEditorDiv, .apiAdminDiv, .apiRootDiv, .apiNodeDiv
+    {
+        font-size: 4px;
+        width: 28px;
+    }
+
+    .showOtherButton { font-size: 4px !important; width: 48px !important; margin-left: 8px !important; }
+
+    .argumentDiv, .optionalArgumentDiv, .commandDiv, .endpointDiv { font-size: 8px; }
+    .databaseIdentifier, .ultralinkIdentifier, .jobIdentifier, .userIdentifier, .notificationIdentifier, .serviceIdentifier { font-size: 6px; }
+    .commandDescription { font-size: 6px; }
+    .parameterDetailCell { font-size: 4px; }
+    .groupDiv { font-size: 9px; margin-left: 7px; }
+
+    .endpointNameDivMajor { font-size: 12px; }
+    .endpointNameDivMinor { font-size:  8px; }
+
+    .commandPrivateDiv { font-size: 3px; margin-top: 3px; }
+
+    #apiTable, .endpointContentTable, .endpointTable, .endpointCellTable, .commandRowTable { border-spacing: 0px; }
+
+    .identifierCell, .authDescriptionCell, .identifierDescriptionCell { font-size: 6px; line-height: 10px; }
+
+    .identifierCell { width: 75px; }
+
+    .fullPath, .fullPathInput { font-size: 5px; }
+
+    .endpointDisclosure, .commandDisclosure, .executeDisclosure, .endpointContentDisclosure { width: 8px !important; height: 8px !important; }
+
+    #searchInput { font-size: 18px; }
+
+    .endpointTable { margin-left: 6px; }
+}

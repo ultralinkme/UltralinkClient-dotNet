@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+    <head>
+        <title>Class Documentation</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&amp;subset=latin,latin-ext" type="text/css">
+        <link rel="stylesheet" href="../resources/API.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="../resources/doc.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="../resources/class.css" type="text/css" media="screen" />
+
+        <script type='text/javascript' src="../resources/jquery-min.js"></script>
+    </head>
+    
+    <body>
+
+        <div class='contentDiv'>
+<div id='mainTitle'>ULBase Class</div><table id='searchTable'><tr><td><input id='searchInput' type='text' placeholder='Search Class' /></td></tr></table><table id='classTable'></table>        </div>
+
+        <script type="text/javascript">
+
+            jQuery(".functionDisclosure").click( function()
+            {
+                var thisEl = jQuery( this );
+
+                if( this.className != 'disclosureLoading' )
+                {
+                    var descriptionRow = jQuery( "#" + jQuery(this).attr('data-functionname') + "_description" );
+
+                    if( thisEl.hasClass('disclosureOpen') )
+                    {
+                        descriptionRow.hide();
+                        thisEl.removeClass( 'disclosureOpen' ).addClass( 'disclosureClosed' );
+                    }
+                    else if( thisEl.hasClass('disclosureClosed') )
+                    {
+                        descriptionRow.show();
+                        thisEl.removeClass( 'disclosureClosed' ).addClass( 'disclosureOpen' );
+                    }
+                }
+            });
+
+            function performSearch()
+            {
+                var ss = jQuery("#searchInput").val().toLowerCase();
+                if( ss != "" )
+                {
+                    jQuery("#apiTable .disclosureOpen").click();
+
+                    var results = jQuery('.nameSpan, .nameSpanStatic').filter( function()
+                    {
+                        var theSpan = jQuery(this);
+                        var cs = theSpan.text().toLowerCase();
+                        if( cs.indexOf(ss) > -1 ){ return true; }
+                        return false;
+                    } );
+
+            //        console.log(results);
+
+                    results.each( function()
+                    {
+                        var thisRes = jQuery(this);
+
+                        thisRes.addClass("searchResultHighlight");
+                    } );
+
+                }
+            }
+
+            jQuery("#searchInput").keydown( function( e )
+            {
+                jQuery(".searchResultHighlight").removeClass("searchResultHighlight");
+                if( e.which == 13 ){ performSearch(); }
+            } );
+
+
+        </script>
+
+    </body>
+</html>
