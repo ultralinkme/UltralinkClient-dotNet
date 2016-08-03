@@ -20,7 +20,7 @@ namespace UL
 
         public bool dirty = false;
 
-        /* GROUP(Class Functions) ul(Ultralink) Returns an array of connections for the ultralink <b>ul</b>. */
+        /* GROUP(Class Functions) ul(Ultralink) Returns an array of connections for the Ultralink <b>ul</b>. */
         public static List<Connection> getConnections( Ultralink ul )
         {
             List<Connection> theConnections = new List<Connection>();
@@ -35,7 +35,7 @@ namespace UL
             return theConnections;
         }
 
-        /* GROUP(Class Functions) theULA(Ultralink or <ultralink identifier>) theULB(Ultralink or <ultralink identifier>) theConnection(A connection string.) db(<Database or <database identifier>>) Creates a connection <b>theConnection</b> between ultralinks <b>theULA</b> and <b>theULB</b>. */
+        /* GROUP(Class Functions) theULA(Ultralink or <ultralink identifier>) theULB(Ultralink or <ultralink identifier>) theConnection(A connection string.) db(<Database or <database identifier>>) Creates a connection <b>theConnection</b> between Ultralinks <b>theULA</b> and <b>theULB</b>. */
         public static Connection C( object theULA, object theULB, string theConnection = null, object db = null )
         {
             Connection c = new Connection();

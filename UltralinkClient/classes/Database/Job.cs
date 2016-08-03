@@ -30,10 +30,10 @@ namespace UL
             return j;
         }
 
-        /* GROUP(Class Functions) ID(<job identifier>) db(<database identifier>) Returns the existing ultralink object specified by <b>ID</b>. Errors out if it does not exist. */
+        /* GROUP(Class Functions) ID(<job identifier>) db(<database identifier>) Returns the existing Ultralink object specified by <b>ID</b>. Errors out if it does not exist. */
         public static Job existingJ( string ID = "-1", object db = null ){ Job j = Job.J( ID, db ); if( !j.doesExist() ){ UltralinkAPI.commandResult( 404, j.description() + " does not exist." ); } return j; }
 
-        /* GROUP(Information) Returns a string describing this ultralink. */
+        /* GROUP(Information) Returns a string describing this Ultralink. */
         public string description(){ return "Job " + db.name + "/" + ID; }
 
         /* GROUP(Information) Returns whether this job exists on disk. */
@@ -42,13 +42,13 @@ namespace UL
         /* GROUP(Work) Gets a list of the assignment details for all users who have even completed any work for the specified job or are currently assigned work. */
         public JArray jobAssignmentDetails(){ return (JArray)APICall( "assignments", "Couldn't lookup the job details for " + ID ); }
 
-        /* GROUP(Work) Gets a list of the ultralinks currently assigned to the current user for the given job. */
+        /* GROUP(Work) Gets a list of the Ultralinks currently assigned to the current user for the given job. */
         public JArray getJobAssigned(){ return (JArray)APICallSub( "/ul", "", "Couldn't lookup the assigned for " + ID ); }
 
-        /* GROUP(Work) description_ID(An Ultralink ID.) Gets the work state of an ultralink for the given job if it has been assigned to the current user. */
+        /* GROUP(Work) description_ID(An Ultralink ID.) Gets the work state of an Ultralink for the given job if it has been assigned to the current user. */
         public JObject getWorkState( string description_ID ){ return (JObject)APICallSub( "/ul/" + description_ID, "", "Couldn't lookup the work state for  " + description_ID + " on " + ID ); }
 
-        /* GROUP(Work) description_ID(An Ultralink ID.) operation(A valid operation ID for the job.) input(An input string if the operation requires it.) Commits an operation for an ultralink in a job with an optional input. */
+        /* GROUP(Work) description_ID(An Ultralink ID.) operation(A valid operation ID for the job.) input(An input string if the operation requires it.) Commits an operation for an Ultralink in a job with an optional input. */
         public bool commitWork( string description_ID, string operation, string input ){ if (APICallSub("/ul/" + description_ID, new JObject {["operation"] = operation,["input"] = input }, "Couldn't commit work for  " + description_ID + " on " + ID) != null) { return true; } return false; }
 
         /* GROUP(Work) theUser(<user identifier>) amount(An optional amount of work to assign.) Attempts to assign an optionally given amount of work to the specified user for the specified job. If no amount is specified then if tries to assign the default amount for the job. */

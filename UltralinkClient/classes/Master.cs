@@ -1,4 +1,4 @@
-﻿// Copyright © 2016 Ultralink Inc.
+// Copyright © 2016 Ultralink Inc.
 
 using System;
 using System.Collections.Generic;
@@ -23,6 +23,7 @@ namespace UL
 
         public int numberOfCalls = 0;
 
+        /* GROUP(Interfacing) mp(A URL to an Ultralink Master) Creates an Ultralink Master instance located at <b>mp</b>. */
         public static Master M( string mp = "https://ultralink.me/" )
         {
             Master m = new Master();
@@ -38,6 +39,16 @@ namespace UL
             return m;
         }
 
+        /* GROUP(Interfacing) at(An Ultralink API Key) mp(A URL to an Ultralink Master) Creates an Ultralink Master instance located at <b>mp</b> and authenticates it against the given API Key <b>at</b>. */
+        public static Master authenticate( string at, string mp = "https://ultralink.me/" )
+        {
+            Master m = Master.M( mp );
+            m.login(at);
+
+            return m;
+        }
+
+        /* GROUP(Interfacing) at(An Ultralink API Key) Authenticates this Master object with the given API Key. Returns the corresponding User object. */
         public User login( string at )
         {
             JObject details = (JObject)APICall("0.9.1/user/me", "", at);
@@ -57,6 +68,12 @@ namespace UL
 
             return User.cUser;
         }
+
+        /* GROUP(Interfacing) identifier(<database identifier>) Sets the current database to the one identified by <b>identifier</b>. */
+        public static Master currentMaster( string mp = "https://ultralink.me/" ){ Master theM = M( mp ); if( theM != null ){ theM.setCurrent(); return theM; } return null; }
+
+        /* GROUP(Interfacing) Sets this master to be the current master. */
+        public void setCurrent(){ cMaster = this; }
 
         public object APICall( string command, object fieldsIncoming = null, string at = "" )
         {
@@ -159,7 +176,7 @@ namespace UL
         /* GROUP(Misc.) Returns all the unique user assocation types. */
         public List<string> associationTypes(){ JArray associationTypes = (JArray)APICall("0.9.1/", "associationTypes"); if(associationTypes != null ){ List<string> types = new List<string>(); foreach( var type in associationTypes) { types.Add( type.ToString() ); } return types; }else{ UltralinkAPI.commandResult( 500, "Could not retrieve the association types" ); } return null; }
 
-        /* GROUP(Misc.) ultralinks(A JSON array of ultralink ID numbers.) Returns descriptions for the specified ultralinks. */
+        /* GROUP(Misc.) ultralinks(A JSON array of Ultralink ID numbers.) Returns descriptions for the specified ultralinks. */
         public JObject specifiedDescriptions( JArray ultralinks )
         {
             JObject result = new JObject();

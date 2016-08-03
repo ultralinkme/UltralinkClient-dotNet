@@ -3,7 +3,7 @@
     {  "order": "-1000", "categoryType": "meta",
         "links":
         {
-            "ultralinkme": { "name": "Ultralink", "pane": "true", "w": "600", "h": "400", "viewType": "light", "iconAdjustY": "0.03", "suppliesAuth": "true" },
+            "ultralinkme": { "name": "Ultralink", "pane": "true", "w": "600", "h": "400", "viewType": "light", "icon": "icon.png", "iconShrinkage": "0.7", "suppliesAuth": "true" },
             "unknown": { "name": "Unknown" }
         }
     },
@@ -62,7 +62,7 @@
             "mediawiki":  { "name": "MediaWiki",     "pane": "true", "view": "true", "h": "300", "icon": "icon.svg" },
             "mapgoogle":  { "name": "Google Map",    "pane": "true", "view": "true", "iconShrinkage": "0.65", "detectors": ["http.*maps\\.google\\.com"], "h": "500" },
             "comicvine":  { "name": "Comic Vine",    "pane": "true", "message": "true", "auth": "ultralinkme", "view": "true", "autoPop": "true", "detectors": ["http.*comicvine\\.com/"] },
-            "intelark":   { "name": "Intel ARK",     "view": "true", "message": "true", "auth": "ultralinkme", "autoPop": "true", "icon": "icon.svg", "detectors": ["http.*ark\\.intel\\.com/products\/"] },
+            "intelark":   { "name": "Intel ARK",     "pane": "true", "view": "true", "message": "true", "auth": "ultralinkme", "autoPop": "true", "icon": "icon.svg", "detectors": ["http.*ark\\.intel\\.com/products\/"] },
             "angellist":  { "name": "AngelList",     "view": "true", "message": "true", "insights": "true", "suppliesAuth": "true", "endpointDomain": "api.angel.co", "auth": "angellist", "icon": "icon.svg", "iconShrinkage": "0.7", "detectors": ["http.*angel\\.co"] },
             "crunchbase": { "name": "CrunchBase",    "view": "true", "message": "true", "insights": "true", "detectors": ["http.*crunchbase\\.com/(company|person|organization)"] },
             "webmd":      { "name": "WebMD",         "view": "true", "message": "true", "detectors": ["http.*webmd\\.com/"], "h": "300" },
@@ -71,7 +71,7 @@
             "freebase":   { "name": "Freebase",      "detectors": ["http.*freebase\\.com"] },
             "manpage":    { "name": "Documentation", "detectors": ["http.*developer\\.apple\\.com.*/Manpages/", "http.*opengl\\.org.*/docs/man/"] },
             "espn":       { "name": "ESPN", "icon": "icon.svg" },
-            "github":     { "name": "GitHub" },
+            "github":     { "name": "GitHub",        "detectors": ["http.*github\\.com"] },
             "map":        { "name": "Map" }
         }
     },
@@ -97,7 +97,8 @@
         "links":
         {
             "email": { "name": "Email",  "detectors": ["mailto:.*"], "newWindowSuppress": "true" },
-            "xmpp":  { "name": "Jabber", "detectors": ["xmpp:.*"], "view": "true", "auth": "xmpp", "authType": "xmpp", "message": "true", "icon": "icon.svg", "suppliesAuth": "true" }
+            "xmpp":  { "name": "Jabber", "detectors": ["xmpp:.*"], "view": "true", "auth": "xmpp", "authType": "xmpp", "message": "true", "icon": "icon.svg", "suppliesAuth": "true" },
+            "slack": { "name": "Slack",  "detectors": ["http.*slack\\.com"] }
         }
     },
     "Bookmarks":

@@ -23,7 +23,7 @@ namespace UL
 
         public bool dirty = false;
 
-        /* GROUP(Class Functions) ul(Ultralink) Returns an array of words for the ultralink <b>ul</b>. */
+        /* GROUP(Class Functions) ul(Ultralink) Returns an array of words for the Ultralink <b>ul</b>. */
         public static List<Word> getWords( Ultralink ul )
         {
             List<Word> theWords = new List<Word>();

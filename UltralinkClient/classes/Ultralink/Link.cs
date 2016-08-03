@@ -34,7 +34,7 @@ namespace UL
 
         public bool dirty = false;
 
-        /* GROUP(Class Functions) ul(Ultralink) Returns an array of links for the ultralink <b>ul</b>. */
+        /* GROUP(Class Functions) ul(Ultralink) Returns an array of links for the Ultralink <b>ul</b>. */
         public static List<Link> getLinks( Ultralink ul )
         {
             List<Link> theLinks = new List<Link>();
@@ -53,7 +53,7 @@ namespace UL
             return theLinks;
         }
 
-        /* GROUP(Class Functions) theUL(Ultralink) theURL(A URL string or URL ID.) type(A link type string.) language(A language code string.) country(A country code string.) primaryLink(Boolean. Indiciates whether the link is primary.) metaInfo(An object or JSON string representing the metaInfo.) theURL2(A URL string or URL ID.) Creates a link on the ultralink <b>theUL</b>. */
+        /* GROUP(Class Functions) theUL(Ultralink) theURL(A URL string or URL ID.) type(A link type string.) language(A language code string.) country(A country code string.) primaryLink(Boolean. Indiciates whether the link is primary.) metaInfo(An object or JSON string representing the metaInfo.) theURL2(A URL string or URL ID.) Creates a link on the Ultralink <b>theUL</b>. */
         public static Link L( Ultralink theUL, string theURL, string type, string language, string country, string primaryLink, object metaInfo, string theURL2 = "" )
         {
             Link l = new Link();

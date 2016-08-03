@@ -23,7 +23,7 @@ namespace UL
 
         public static string defaultCategory = "(NEEDS CATEGORIZATION)";
 
-        /* GROUP(Class Functions) ul(Ultralink) Returns an array of categories for the ultralink <b>ul</b>. */
+        /* GROUP(Class Functions) ul(Ultralink) Returns an array of categories for the Ultralink <b>ul</b>. */
         public static List<Category> getCategories( Ultralink ul )
         {
             List<Category> theCategories = new List<Category>();
@@ -38,7 +38,7 @@ namespace UL
             return theCategories;
         }
 
-        /* GROUP(Class Functions) theUL(Ultralink) theString(A category string.) thePrimaryCategory(Boolean. Indicates whether this category is primary.) Creates a category <b>theString</b> on the ultralink <b>theUL</b>. */
+        /* GROUP(Class Functions) theUL(Ultralink) theString(A category string.) thePrimaryCategory(Boolean. Indicates whether this category is primary.) Creates a category <b>theString</b> on the Ultralink <b>theUL</b>. */
         public static Category C( Ultralink theUL, string theString, string thePrimaryCategory = null )
         {
             Category c = new Category();
@@ -83,7 +83,7 @@ namespace UL
         /* GROUP(Representations) Returns a serializable object representation of the category. */
         public JObject objectify(){ return new JObject{ ["category"] = categoryString, ["primaryCategory"] = primaryCategory }; }
 
-        /* GROUP(Primary) Returns the primary category for the ultralink that this category is attached to. */
+        /* GROUP(Primary) Returns the Primary Category for the Ultralink that this category is attached to. */
         public string getCurrentPrimary()
         {
             JValue currentPrimary = (JValue)Master.cMaster.APICall("0.9.1/db/" + ul.db.ID + "/ul/" + ul.ID, "primaryCategory" );
@@ -91,7 +91,7 @@ namespace UL
             {
                 return currentPrimary.ToObject<string>();
             }
-            else{ UltralinkAPI.commandResult( 500, "Could not get primary category for " + ul.description() ); }
+            else{ UltralinkAPI.commandResult( 500, "Could not get Primary Category for " + ul.description() ); }
 
             return null;
         }

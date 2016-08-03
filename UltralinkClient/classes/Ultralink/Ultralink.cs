@@ -28,7 +28,7 @@ namespace UL
             set { populateDetails(name); objectStorage[name] = value; }
         }
 
-        /* GROUP(Class Functions) ID(<ultralink identifier> or -1 which indicates a new Ultralink) db(Database, <database identifier> or "" which indicates cDB) initialCategory(Category string. Optionally set if you are creating a new Ultralink) needsReview(Review status number. 0 means no review needed) Produces an ultralink object for the parameters specified.<br><br>Call with the <b>ID</b> parameter (and <b>db</b> if you need to) to simply get an object representing an Ultralink.<br><br>Call with no parameters to create a new Ultralink in cDB (can fill in <b>initialCategory</b> or <b>needsReview</b> if desired).*/
+        /* GROUP(Class Functions) ID(<ultralink identifier> or -1 which indicates a new Ultralink) db(Database, <database identifier> or "" which indicates cDB) initialCategory(Category string. Optionally set if you are creating a new Ultralink) needsReview(Review status number. 0 means no review needed) Produces an Ultralink object for the parameters specified.<br><br>Call with the <b>ID</b> parameter (and <b>db</b> if you need to) to simply get an object representing an Ultralink.<br><br>Call with no parameters to create a new Ultralink in cDB (can fill in <b>initialCategory</b> or <b>needsReview</b> if desired).*/
         public static Ultralink U( object ID = null, object db = null, string initialCategory = "", int needsReview = 0 )
         {
             if( ID == null ){ ID = -1L; }
@@ -184,7 +184,7 @@ namespace UL
             return null;
         }
 
-        /* GROUP(Information) Returns whether this ultralink exists in the master's storage. */
+        /* GROUP(Information) Returns whether this Ultralink exists in the master's storage. */
         public bool doesExist()
         {
             if( ID != -1 )
@@ -213,10 +213,10 @@ namespace UL
             return false;
         }
 
-        /* GROUP(Information) Returns a string that can be used to identify this ultralink. */
+        /* GROUP(Information) Returns a string that can be used to identify this Ultralink. */
         public string indicatorString() { return db.ID + "." + ID; }
 
-        /* GROUP(Information) Returns a string describing this ultralink. */
+        /* GROUP(Information) Returns a string describing this Ultralink. */
         public string description() { return "Ultralink " + db.name + "/" + ID; }
 
         /* PRIVATE GROUP(Representations) toArray(Array to write the preview info to.) reducedFormat(Boolean. If true, writes back preview info in a reduced format) Adds the preview information returned from previewInfo to the provided associative array. */
@@ -247,10 +247,10 @@ namespace UL
             if( pi[metaInfoSignifier]    != null ){ toArray[metaInfoSignifier]    = pi[metaInfoSignifier];    }
         }
 
-        /* GROUP(Representations) reducedFormat(Boolean. If true, returns preview info in a reduced format) Returns the set of information sufficient to presenting a small preview of an ultralink: primary word, primary category, primary image, primary image meta info and whether it needs review or not. */
+        /* GROUP(Representations) reducedFormat(Boolean. If true, returns preview info in a reduced format) Returns the set of information sufficient to presenting a small preview of an Ultralink: Primary Word, Primary Category, primary image, primary image meta info and whether it needs review or not. */
         public JObject previewInfo(bool reducedFormat = false) { return (JObject)APICall(new JObject { ["previewInfo"] = reducedFormat }, "Could not get preview info for " + description()); }
 
-        /* GROUP(Representations) Returns a string representing the status of this ultralink at this point in time. */
+        /* GROUP(Representations) Returns a string representing the status of this Ultralink at this point in time. */
         public string statusRecord()
         {
             JObject record = objectify(true, true);
@@ -258,13 +258,13 @@ namespace UL
             return JsonConvert.SerializeObject(record);
         }
 
-        /* GROUP(Representations) withPageFeedback(Boolean. True will add all page feedback for this Ultralink to the result.) addConnectionInfo(Boolean. True will add preview info to every Connection.) addAffiliateKeys(Boolean. True will add the Database affiliate keys to the result.) removeDefaultValues(Boolean. True will remove attributes that are set to the default values.) addPermissions(Boolean. True will add the relevant permission data for cUser on this Ultralink.) reducedFormat(Boolean. If true, returns the object in a reduced format) Returns a JSON string representation of this ultralink. */
+        /* GROUP(Representations) withPageFeedback(Boolean. True will add all page feedback for this Ultralink to the result.) addConnectionInfo(Boolean. True will add preview info to every Connection.) addAffiliateKeys(Boolean. True will add the Database affiliate keys to the result.) removeDefaultValues(Boolean. True will remove attributes that are set to the default values.) addPermissions(Boolean. True will add the relevant permission data for cUser on this Ultralink.) reducedFormat(Boolean. If true, returns the object in a reduced format) Returns a JSON string representation of this Ultralink. */
         public string json(bool withPageFeedback = false, bool addConnectionInfo = false, bool addAffiliateKeys = false, bool addPermissions = false, bool removeDefaultValues = false, bool reducedFormat = false) { return JsonConvert.SerializeObject(objectify(withPageFeedback, addConnectionInfo, addAffiliateKeys, addPermissions, removeDefaultValues, reducedFormat)); }
 
-        /* GROUP(Representations) withPageFeedback(Boolean. True will add all page feedback for this Ultralink to the result.) addConnectionInfo(Boolean. True will add preview info to every Connection.) addAffiliateKeys(Boolean. True will add the Database affiliate keys to the result.) removeDefaultValues(Boolean. True will remove attributes that are set to the default values.) addPermissions(Boolean. True will add the relevant permission data for cUser on this Ultralink.) reducedFormat(Boolean. If true, returns the object in a reduced format) Returns a serializable object representation of the ultralink. Parameters indicate what sets of additional information should be included and in what format.<br><br><b>addAffiliateKeys</b> and <b>addPermissions</b> are usually only used when visually editing the Ultralink.*/
+        /* GROUP(Representations) withPageFeedback(Boolean. True will add all page feedback for this Ultralink to the result.) addConnectionInfo(Boolean. True will add preview info to every Connection.) addAffiliateKeys(Boolean. True will add the Database affiliate keys to the result.) removeDefaultValues(Boolean. True will remove attributes that are set to the default values.) addPermissions(Boolean. True will add the relevant permission data for cUser on this Ultralink.) reducedFormat(Boolean. If true, returns the object in a reduced format) Returns a serializable object representation of the Ultralink. Parameters indicate what sets of additional information should be included and in what format.<br><br><b>addAffiliateKeys</b> and <b>addPermissions</b> are usually only used when visually editing the Ultralink.*/
         public JObject objectify(bool withPageFeedback = false, bool addConnectionInfo = false, bool addAffiliateKeys = false, bool addPermissions = false, bool removeDefaultValues = false, bool reducedFormat = false)
         {
-            // First test to see if the ultralink is even there still
+            // First test to see if the Ultralink is even there still
             if (!doesExist()) { return null; }
 
             string needsReviewSignifier = "needsReview";
@@ -372,7 +372,7 @@ namespace UL
 
                 JObject theConnection = new JObject{ { "aID", connection.ulA.ID }, { connectionSignifier, connection.connection }, { "bID", connection.ulB.ID } };
 
-                // Get useful preview data for visualizing the connections to this ultralink
+                // Get useful preview data for visualizing the connections to this Ultralink.
                 if( addConnectionInfo )
                 {
                     connection.getOtherConnection( this ).addPreviewInfo( theConnection, reducedFormat);
@@ -456,10 +456,10 @@ namespace UL
         /* GROUP(Analytics) timeScale(The time scale of the data we are looking at. Values can be <b>monthly</b>, <b>daily</b> or <b>hourly</b>.) timeDuration(The numeric length of the time slice that the data should examine in units defined by <b>timeScale</b>.) Returns chart data for historical occurrence counts for a specified time period. */
         public JArray occurrences( string timeScale, string timeDuration ){ return (JArray)APICall( new JObject{ ["occurrences"] = "", ["timeScale"] = timeScale, ["timeDuration"] = timeDuration }, "Could not retrieve occurrences for " + description() ); }
 
-        /* GROUP(Analytics) pagePath(A URL path fragment determing the scope of the results.) restrictToThis(Boolean. Indicates whether the results should be restricted to only the exact pagePath) timeRestrict(Determines if the results should be restricted in any way. Values can be cache or alltime.) timeScale(The time scale of the data we are looking at. Values can be <b>monthly</b>, <b>daily</b> or <b>hourly</b>.) timeDuration(The numeric length of the time slice that the data should examine in units defined by <b>timeScale</b>.) getAggregation(Boolean. Determines if the extra aggreggation information should be include) Returns a set of data outlining click activity for this ultralink in a specifc URL path fragment within a specific time span. Can set whether the results should be restricted to only data connected to what is in the current content cache. Can restrict the results to only the exact path instead of all the paths under it. Can also add specific data on aggreggation. */
+        /* GROUP(Analytics) pagePath(A URL path fragment determing the scope of the results.) restrictToThis(Boolean. Indicates whether the results should be restricted to only the exact pagePath) timeRestrict(Determines if the results should be restricted in any way. Values can be cache or alltime.) timeScale(The time scale of the data we are looking at. Values can be <b>monthly</b>, <b>daily</b> or <b>hourly</b>.) timeDuration(The numeric length of the time slice that the data should examine in units defined by <b>timeScale</b>.) getAggregation(Boolean. Determines if the extra aggreggation information should be include) Returns a set of data outlining click activity for this Ultralink in a specifc URL path fragment within a specific time span. Can set whether the results should be restricted to only data connected to what is in the current content cache. Can restrict the results to only the exact path instead of all the paths under it. Can also add specific data on aggreggation. */
         public JArray path( string pagePath, string restrictToThis, string timeRestrict, string timeScale, string timeDuration, string getAggregation ){ return (JArray)APICall( new JObject{ ["path"] = "", ["timeScale"] = timeScale, ["timeDuration"] = timeDuration, ["pagePath"] = pagePath, ["restrictToThis"] = restrictToThis, ["resultRestrict"] = timeRestrict, ["getAggregation"] = getAggregation }, "Could not retrieve path for " + description() ); }
 
-        /* GROUP(Analytics) website_ID(A website ID.) offset(Pagination offset.) limit(Pagination limit. Default: <b>100</b>, Max: <b>1000</b>.) Returns a list of pages on a given website that this ultralink is known to be on. */
+        /* GROUP(Analytics) website_ID(A website ID.) offset(Pagination offset.) limit(Pagination limit. Default: <b>100</b>, Max: <b>1000</b>.) Returns a list of pages on a given website that this Ultralink is known to be on. */
         public JArray instancePages( string website_ID, int offset = 0, int limit = 100 )
         {
             if( limit == 0 ){ limit = 100; } if( limit > 1000 ){ limit = 1000; }
@@ -467,7 +467,7 @@ namespace UL
             return (JArray)APICall( new JObject{ ["instancePages"] = website_ID, ["offset"] = offset, ["limit"] = limit }, "Could not get the instance pages for " + description() );
         }
 
-        /* GROUP(Analytics) offset(Pagination offset.) limit(Pagination limit. Default: <b>100</b>, Max: <b>1000</b>.) Returns a list of websites that this ultralink is known to be on. */
+        /* GROUP(Analytics) offset(Pagination offset.) limit(Pagination limit. Default: <b>100</b>, Max: <b>1000</b>.) Returns a list of websites that this Ultralink is known to be on. */
         public JArray instanceWebsites( int offset = 0, int limit = 100 )
         {
             if( limit == 0 ){ limit = 100; } if( limit > 1000 ){ limit = 1000; }
@@ -478,19 +478,19 @@ namespace UL
         /* GROUP(Analytics) commons(An array of commonality description objects describing the calculations.) pullLinkType(A link type determining what link should be pulled out and included in the answer sets.) getIntersect(A boolean indicating if an intersection array of all the commonality sets should also be returned.) Returns a result set for each commonality description objects passed in. Returns resultant sets that include the desired link type. Can optionally return an intersection of the resultant sets as well. Resultant sets sorted by commonality value descending. */
         public JArray connectionCommon( JObject commons, string pullLinkType, string getIntersect = "false" ){ return (JArray)APICall( new JObject{ ["connectionCommon"] = commons, ["uID"] = ID, ["pullLinkType"] = pullLinkType, ["getIntersect"] = getIntersect }, "Could not get the connection common for " + description() ); }
         
-        /* GROUP(Analytics) Returns a set of ultralinks that have a common word with this one. */
-        public JArray wordCommon(){ return (JArray)APICall( "wordCommon", "Could not get common ultralinks for " + description() ); }
+        /* GROUP(Analytics) Returns a set of Ultralinks that have a common word with this one. */
+        public JArray wordCommon(){ return (JArray)APICall( "wordCommon", "Could not get common Ultralinks for " + description() ); }
 
-        /* GROUP(Analytics) Returns a top 20 list of ultralinks that appear in the same fragments as this one ordered by occurrence number descending. */
-        public JArray related(){ return (JArray)APICall( "related", "Could not get related ultralinks for " + description() ); }
+        /* GROUP(Analytics) Returns a top 20 list of Ultralinks that appear in the same fragments as this one ordered by occurrence number descending. */
+        public JArray related(){ return (JArray)APICall( "related", "Could not get related Ultralinks for " + description() ); }
 
-        /* GROUP(Actions) nr(Review status number. 0 means no review needed) Sets this ultralink"s needsReview value. */
+        /* GROUP(Actions) nr(Review status number. 0 means no review needed) Sets this Ultralink's needsReview value. */
         public void setNeedsReview( int nr = 0 ){ if( nr != (int)this["needsReview"] ){ dirtyNeedsReview = true; } this["needsReview"] = nr; }
 
-        /* GROUP(Actions) modificationID(A determination status. Values can be <b>GOOD</b>, <b>BAD</b> and <b>REVERTED</b>.) determination() Sets the status of the specified modification and sets the state of the ultralink to what it was before the modification if the determination is "REVERTED". */
+        /* GROUP(Actions) modificationID(A determination status. Values can be <b>GOOD</b>, <b>BAD</b> and <b>REVERTED</b>.) determination() Sets the status of the specified modification and sets the state of the Ultralink to what it was before the modification if the determination is "REVERTED". */
         public bool modificationDetermination( string modificationID, string determination ){ if (APICall(new JObject { { "modificationDetermination", modificationID }, { "determination", determination } }, "Could not set determination on " + description()) != null) { return true; } return false; }
 
-        /* GROUP(Actions) destDB(<database identifier>) Creates a copy of this ultralink in another specified database. */
+        /* GROUP(Actions) destDB(<database identifier>) Creates a copy of this Ultralink in another specified database. */
         public void copyIntoDB( object destDB )
         {
             Ultralink nuUL = Ultralink.U( "-1", destDB );
@@ -502,10 +502,10 @@ namespace UL
             nuUL.sync();
         }
 
-        /* GROUP(Actions) mergeIDs(A JSON object listing the IDs of the ultralinks to merge into this one.) Merges all the given ultralinks into this one. */
+        /* GROUP(Actions) mergeIDs(A JSON object listing the IDs of the Ultralinks to merge into this one.) Merges all the given Ultralinks into this one. */
         public bool merge( JArray mergeIDs ){ return (bool)APICall( new JObject{ "merge", mergeIDs }, "Could not perform merge into " + description() ); }
 
-        /* GROUP(Actions) Removes everything from this ultralink. */
+        /* GROUP(Actions) Removes everything from this Ultralink. */
         public void blankSlate( bool pageFeedbackToo = false )
         {
             removeAllWords();
@@ -516,7 +516,7 @@ namespace UL
             if( pageFeedbackToo ){ removeAllPageFeedback(); }
         }
 
-        /* GROUP(Actions) nuState(A JSON object representing the Ultralink state.) Sets the data for this ultralink from the information found in <b>nuState</b>. */
+        /* GROUP(Actions) nuState(A JSON object representing the Ultralink state.) Sets the data for this Ultralink from the information found in <b>nuState</b>. */
         public void setFromObject( JObject nuState )
         {
             if( nuState["time"] != null ){ this["time"] = nuState["time"]; }
@@ -541,7 +541,7 @@ namespace UL
             if( nuState["pageFeedback"] != null ){ foreach( JObject pf in nuState["pageFeedback"] ){ setPageFeedbackFromObject( pf ); } }
         }
 
-        /* GROUP(Actions) nuState(A JSON object representing the Ultralink state.) Sets the data for this ultralink from the information found in <b>nuState</b> and syncs the changes to disk. */
+        /* GROUP(Actions) nuState(A JSON object representing the Ultralink state.) Sets the data for this Ultralink from the information found in <b>nuState</b> and syncs the changes to disk. */
         public void syncFromObject( JObject nuState )
         {
             setFromObject( nuState );
@@ -587,7 +587,7 @@ namespace UL
             }
         }
 
-        /* GROUP(Actions) outputDifference(Boolean. If true, then echo the differences from the previous state.) Syncs the changes to this ultralink to disk in an efficient manner. */
+        /* GROUP(Actions) outputDifference(Boolean. If true, then echo the differences from the previous state.) Syncs the changes to this Ultralink to disk in an efficient manner. */
         public int sync( bool outputDifference = false )
         {
             if( User.cUser.authForDB( db ) <= Auth.authLevels["Contributor"] )
@@ -597,7 +597,7 @@ namespace UL
                 {
                     ID = theID.ToObject<long>();
                 }
-                else{ UltralinkAPI.commandResult( 500, "Could not create a new ultralink in " + db.description() ); }
+                else{ UltralinkAPI.commandResult( 500, "Could not create a new Ultralink in " + db.description() ); }
             }
             else
             {
@@ -609,7 +609,7 @@ namespace UL
                 bool categoriesDifferent  = false;
                 bool urlsDifferent        = false;
 
-                // Freshly created ultralink, here on this machine
+                // Freshly created Ultralink, here on this machine.
                 if( ID == -1 )
                 {
                     string categoryString = Category.defaultCategory; Category primaryCategory = getPrimaryCategory(); if( primaryCategory != null ){ categoryString = primaryCategory.categoryString; }
@@ -619,7 +619,7 @@ namespace UL
                     {
                         ID = (long)theID;
                     }
-                    else{ UltralinkAPI.commandResult( 500, "Could not create a new ultralink in " + db.description() ); }
+                    else{ UltralinkAPI.commandResult( 500, "Could not create a new Ultralink in " + db.description() ); }
                 }
 
                 if( dirtyNeedsReview )
@@ -675,24 +675,24 @@ namespace UL
             return 0;
         }
 
-        /* GROUP(Actions) Deletes this ultralink. */
+        /* GROUP(Actions) Deletes this Ultralink. */
         public bool nuke(){ if (APICall("nuke", "Could not nuke " + description()) != null) { return true; } return false; }
 
     // Words
 
-        /* GROUP(Words) Returns the primary word if set. If not, returns the first word listed. */
+        /* GROUP(Words) Returns the Primary Word if set. If not, returns the first word listed. */
         public Word getFirstWord(){ Word word = getPrimaryWord(); if( word != null ){ if( ((List<Word>)this["words"]).Count > 0 ){ word = ((List<Word>)this["words"])[0]; } } return word; }
 
-        /* GROUP(Words) Returns the primary word or null if not set. */
+        /* GROUP(Words) Returns the Primary Word or null if not set. */
         public Word getPrimaryWord(){ foreach( Word theWord in (List<Word>)this["words"] ){ if( theWord.primaryWord == "true" ){ return theWord; } } return null; }
 
-        /* GROUP(Words) string(A word string.) nuke(Boolean. If true then remove the Word object found from the Ultralink.) Returns the word on this ultralink associated with <b>string</b>. */
+        /* GROUP(Words) string(A word string.) nuke(Boolean. If true then remove the Word object found from the Ultralink.) Returns the word on this Ultralink associated with <b>string</b>. */
         public Word getWord( string wordString, bool nuke = false ){ foreach( Word theWord in (List<Word>)this["words"] ){ if( theWord.wordString == wordString ){ if( nuke ){ ((List<Word>)this["words"]).Remove(theWord); } return theWord; } } return null; }
 
-        /* GROUP(Words) string(A word string.) caseSensitive(Boolean. 1 indicates that this Word is case sensitive.) primaryWord(Boolean. 1 indicates that this word is the primary on this Ultralink.) commonalityThreshold(A number indicating the commonality threshold.) nuke(Boolean. If true then remove the Word object found from the Ultralink.) Returns the word on this ultralink associated with the parameters. */
+        /* GROUP(Words) string(A word string.) caseSensitive(Boolean. 1 indicates that this Word is case sensitive.) primaryWord(Boolean. 1 indicates that this word is the primary on this Ultralink.) commonalityThreshold(A number indicating the commonality threshold.) nuke(Boolean. If true then remove the Word object found from the Ultralink.) Returns the word on this Ultralink associated with the parameters. */
         public Word getWordFull( string wordString, string caseSensitive, string primaryWord, string commonalityThreshold, bool nuke = false ){ foreach( Word theWord in (List<Word>)this["words"] ){ if( (theWord.wordString == wordString) && (theWord.caseSensitive == caseSensitive) && (theWord.primaryWord == primaryWord) && (theWord.commonalityThreshold == commonalityThreshold) ){ if( nuke ){ ((List<Word>)this["words"]).Remove(theWord); } return theWord; } } return null; }
 
-        /* GROUP(Words) o(A JSON object representing the Word.) Sets a word on this ultralink based on the information in <b>o</b>. */
+        /* GROUP(Words) o(A JSON object representing the Word.) Sets a word on this Ultralink based on the information in <b>o</b>. */
         public Word setWordFromObject( JObject o )
         {
             if( o["word"] != null )
@@ -711,7 +711,7 @@ namespace UL
             return null;
         }
 
-        /* GROUP(Words) string(A word string.) caseSensitive(Boolean. 1 indicates that this Word is case sensitive.) primaryWord(Boolean. 1 indicates that this word is the primary on this Ultralink.) commonalityThreshold(A number indicating the commonality threshold.) Sets a word on this ultralink. Adds it if it does exist yet and modifies it if it does. */
+        /* GROUP(Words) string(A word string.) caseSensitive(Boolean. 1 indicates that this Word is case sensitive.) primaryWord(Boolean. 1 indicates that this word is the primary on this Ultralink.) commonalityThreshold(A number indicating the commonality threshold.) Sets a word on this Ultralink. Adds it if it does exist yet and modifies it if it does. */
         public Word setWord( string wordString, string caseSensitive = null, string primaryWord = null, string commonalityThreshold = null )
         {
             Word theWord = getWord(wordString);
@@ -752,7 +752,7 @@ namespace UL
             ((List<Word>)this["wordsDead"]).Add( getWord((string)w, true) );
         }
 
-        /* GROUP(Words) Removes all existing words from this ultralink. */
+        /* GROUP(Words) Removes all existing words from this Ultralink. */
         public void removeAllWords(){ ((List<Word>)this["wordsDead"]).Concat(((List<Word>)this["word"])); this["words"] = new List<Word>(); }
 
         /* GROUP(Words) w(Word or a word string.) nuWord(Word or a word string.) caseSensitive(Boolean. 1 indicates that this Word is case sensitive.) primaryWord(Boolean. 1 indicates that this word is the primary on this Ultralink.) commonalityThreshold(A number indicating the commonality threshold.) Replaces word <b>w</b> with a new word. */
@@ -770,10 +770,10 @@ namespace UL
 
     // Categories
 
-        /* GROUP(Categories) Returns the primary category for this ultralink or returns null if it doesn't exist. */
+        /* GROUP(Categories) Returns the Primary Category for this Ultralink or returns null if it doesn't exist. */
         public Category getPrimaryCategory(){ foreach( Category theCategory in (List<Category>)this["categories"] ){ string pc = theCategory.primaryCategory; if( pc != null ){ return theCategory; } } return null; }
 
-        /* GROUP(Categories) string(A category string.) nuke(Boolean. If true then remove the Category object found from the Ultralink.) Returns the category on this ultralink identified by <b>string</b>. */
+        /* GROUP(Categories) string(A category string.) nuke(Boolean. If true then remove the Category object found from the Ultralink.) Returns the category on this Ultralink identified by <b>string</b>. */
         public Category getCategory( string categoryString, bool nuke = false ){ foreach( Category theCategory in (List<Category>)this["categories"] ){ if( theCategory.categoryString == categoryString ){ if( nuke ){ ((List<Category>)this["categories"]).Remove(theCategory); } return theCategory; } } return null; }
 
         /* GROUP(Categories) string(A category string.) primaryCategory(Indicates whether this new Category should be the primary.) Sets a category based on <b>string</b>. Adds it if it doens't exist and modifies it if it does. */
@@ -813,7 +813,7 @@ namespace UL
             ((List<Category>)this["categoriesDead"]).Remove( getCategory((string)c, true) );
         }
 
-        /* GROUP(Categories) Removes all categories from this ultralink. */
+        /* GROUP(Categories) Removes all categories from this Ultralink. */
         public void removeAllCategories(){ ((List<Category>)this["categoriesDead"]).Concat(((List<Category>)this["categories"]));  this["categories"] = new List<Category>(); }
 
         /* GROUP(Categories) c(Category or category string.) nuCategory(A category string.) primaryCategory(Indicates whether this new Category should be the primary.) Replaces category <b>c</b> with the passed values. */
@@ -851,7 +851,7 @@ namespace UL
             return filteredResults;
         }
 
-        /* GROUP(Links) url_ID(A URL or URL ID.) type(A link type.) nuke(Boolean. If true then remove the Link object found from the Ultralink.) Returns the link attached to this ultralink identified by <b>url_ID</b>. */
+        /* GROUP(Links) url_ID(A URL or URL ID.) type(A link type.) nuke(Boolean. If true then remove the Link object found from the Ultralink.) Returns the link attached to this Ultralink identified by <b>url_ID</b>. */
         public Link getLink( string url_ID, string type = null, bool nuke = false )
         {
             int val;
@@ -875,7 +875,7 @@ namespace UL
             return null;
         }
 
-        /* GROUP(Links) o(A JSON object representing the Link.) Sets a link on this ultralink based on the information in <b>o</b>. */
+        /* GROUP(Links) o(A JSON object representing the Link.) Sets a link on this Ultralink based on the information in <b>o</b>. */
         public Link setLinkFromObject( JObject o )
         {
             if( (o["ID"] != null) && (o["type"] != null) )
@@ -898,7 +898,7 @@ namespace UL
             return null;
         }
 
-        /* GROUP(Links) url(A URL or URL ID.) type(A link type.) language(A language code string.) country(A country code string.) primaryLink(Indicates that the links are primary) metaInfo(A JSON object descriing extra meta info about the Link.) Sets a link on this ultralink. Adds it if it doesn't exist and modifies it if it does. */
+        /* GROUP(Links) url(A URL or URL ID.) type(A link type.) language(A language code string.) country(A country code string.) primaryLink(Indicates that the links are primary) metaInfo(A JSON object descriing extra meta info about the Link.) Sets a link on this Ultralink. Adds it if it doesn't exist and modifies it if it does. */
         public Link setLink( string url, string type = null, string language = null, string country = null, string primaryLink = null, object metaInfo = null )
         {
             int val;
@@ -956,7 +956,7 @@ namespace UL
             if( theLink != null ){ ((List<Link>)this["linksDead"]).Add(theLink); }
         }
 
-        /* GROUP(Links) type(A link type.) Removes all links of <b>type</b> from this ultralink. */
+        /* GROUP(Links) type(A link type.) Removes all links of <b>type</b> from this Ultralink. */
         public void removeLinksOfType( string type )
         {
             List<Link> deadLinks = new List<Link>();
@@ -965,7 +965,7 @@ namespace UL
             foreach( Link link in (List<Link>)this["linksDead"] ){ removeLink( link ); }
         }
 
-        /* GROUP(Links) Removes all links from this ultralink. */
+        /* GROUP(Links) Removes all links from this Ultralink. */
         public void removeAllLinks(){ ((List<Link>)this["linksDead"]).Concat(((List<Link>)this["links"])); this["links"] = new List<Link>(); }
 
         /* GROUP(Links) link(Link or URL string.) nuURL(A URL or URL ID.) type(A link type.) Replaces <b>link</b> with another link based on <b>nuURL</b>. */
@@ -982,7 +982,7 @@ namespace UL
 
     // Connections
 
-        /* GROUP(Connections) ulA(Ultralink or ultralink ID.) ulB(Ultralink or ultralink ID.) nuke(Boolean. If true then remove the Connection object found from the Ultralink.) Returns the connection associated with ultralinks or IDs <b>ulA</b> and <b>ulB</b>. */
+        /* GROUP(Connections) ulA(Ultralink or Ultralink ID.) ulB(Ultralink or Ultralink ID.) nuke(Boolean. If true then remove the Connection object found from the Ultralink.) Returns the connection associated with Ultralinks or IDs <b>ulA</b> and <b>ulB</b>. */
         public Connection getConnection( object ulA, object ulB, bool nuke = false )
         {
             if( ulA is string ){ ulA = Ultralink.U( (string)ulA, db ); }
@@ -1000,7 +1000,7 @@ namespace UL
             return null;
         }
 
-        /* GROUP(Connections) connection(A connection type string.) Returns an array of connections on this ultralink that have the connection type string <b>connection</b>. */
+        /* GROUP(Connections) connection(A connection type string.) Returns an array of connections on this Ultralink that have the connection type string <b>connection</b>. */
         public List<Connection> queryConnections( string connection )
         {
             List<Connection> filteredResults = new List<Connection>();
@@ -1014,7 +1014,7 @@ namespace UL
             return filteredResults;
         }
 
-        /* GROUP(Connections) o(A JSON object representing the Connection.) Sets a connection on this ultralink based on the information in <b>o</b>. */
+        /* GROUP(Connections) o(A JSON object representing the Connection.) Sets a connection on this Ultralink based on the information in <b>o</b>. */
         public Connection setConnectionFromObject( JObject o )
         {
             string aID        = null;
@@ -1028,7 +1028,7 @@ namespace UL
             return setConnection( aID, bID, connection );
         }
 
-        /* GROUP(Connections) ulAIn(Connection or ultralink ID) ulBIn(Connection or ultralink ID) connection(A connection type string) otherDid(Boolean. If true, sets the Connection on the other Ultralink.) Sets a connection for the ultralinks or IDs <b>ulAIn</b> and <b>ulBIn</b>. Adds it if it doesn't exist and modifies it if it doesn't. */
+        /* GROUP(Connections) ulAIn(Connection or Ultralink ID) ulBIn(Connection or Ultralink ID) connection(A connection type string) otherDid(Boolean. If true, sets the Connection on the other Ultralink.) Sets a connection for the Ultralinks or IDs <b>ulAIn</b> and <b>ulBIn</b>. Adds it if it doesn't exist and modifies it if it doesn't. */
         public Connection setConnection( object ulAIn, object ulBIn, string connection = "", bool otherDid = false )
         {
             Ultralink ulA = null;
@@ -1069,10 +1069,10 @@ namespace UL
             return newConnection;
         }
 
-        /* GROUP(Connections) ulB(Connection or ultralink ID) connection(A connection type string) Adds a connection between this ultralink and <b>ulB</b>. */
+        /* GROUP(Connections) ulB(Connection or Ultralink ID) connection(A connection type string) Adds a connection between this Ultralink and <b>ulB</b>. */
         public Connection addConnection( object ulB, string connection = "" ){ return setConnection( this, ulB, connection ); }
 
-        /* GROUP(Connections) c(Connection or ultralink ID) connection(A connection type string) Removes the connection <b>c</b>. */
+        /* GROUP(Connections) c(Connection or Ultralink ID) connection(A connection type string) Removes the connection <b>c</b>. */
         public void removeConnection( object c, string connection = "" )
         {
             if( c is Connection )
@@ -1093,7 +1093,7 @@ namespace UL
             }
         }
 
-        /* GROUP(Connections) Removes all connections from this ultralink. */
+        /* GROUP(Connections) Removes all connections from this Ultralink. */
         public void removeAllConnections()
         {
             ((Dictionary<string, Connection>)this["connectionsDead"]).Concat(((Dictionary<string, Connection>)this["connections"])); this["connections"] = new Dictionary<string, Connection>();
@@ -1101,10 +1101,10 @@ namespace UL
 
     // Page Feedback
 
-        /* GROUP(Page Feedback) page_ID(A page ID) word(A word string.) nuke(Boolean. If true then remove the PageFeedback object found from the Ultralink.) Returns the page feedback for this ultralink on a given page ID for a word string. The word string may be "". Can optionally remove it from the ultralink. */
+        /* GROUP(Page Feedback) page_ID(A page ID) word(A word string.) nuke(Boolean. If true then remove the PageFeedback object found from the Ultralink.) Returns the page feedback for this Ultralink on a given page ID for a word string. The word string may be "". Can optionally remove it from the Ultralink. */
         public PageFeedback getPageFeedback( string page_ID, string word, bool nuke = false ){ foreach( PageFeedback thePageFeedback in (List<PageFeedback>)this["pageFeedback"] ){ if( (thePageFeedback.page_ID == page_ID) && (thePageFeedback.word == word) ){ if( nuke ){ ((List<PageFeedback>)this["pageFeedback"]).Remove(thePageFeedback); } return thePageFeedback; } } return null; }
 
-        /* GROUP(Page Feedback) o(A JSON object representing the PageFeedback.) Sets a page feedback on this ultralink based on the information in <b>o</b>. */
+        /* GROUP(Page Feedback) o(A JSON object representing the PageFeedback.) Sets a page feedback on this Ultralink based on the information in <b>o</b>. */
         public PageFeedback setPageFeedbackFromObject( JObject o )
         {
             if( o["page_ID"] != null )
@@ -1158,10 +1158,10 @@ namespace UL
             return null;
         }
 
-        /* GROUP(Page Feedback) pf(PageFeedback) Removes page feedback <b>pf</b> from this ultralink. */
+        /* GROUP(Page Feedback) pf(PageFeedback) Removes page feedback <b>pf</b> from this Ultralink. */
         public void removePageFeedback( PageFeedback pf ){ ((List<PageFeedback>)this["pageFeedbackDead"]).Add( getPageFeedback( pf.page_ID, pf.word, true ) ); }
 
-        /* GROUP(Page Feedback) Removes all page feedback from this ultralink. */
+        /* GROUP(Page Feedback) Removes all page feedback from this Ultralink. */
         public void removeAllPageFeedback(){ ((List<PageFeedback>)this["pageFeedbackDead"]).Concat(((List<PageFeedback>)this["pageFeedback"])); List<PageFeedback> pageFeedback = new List<PageFeedback>(); }
 
     //
@@ -1169,10 +1169,10 @@ namespace UL
         /* GROUP(Annotation) Returns the URL for this Ultralink's annotation link. */
         public string annotationLink( ){ return Master.cMaster.masterPath + "annotation/" + db.ID + "/" + ID; }
 
-        /* GROUP(Annotation) language(A language code string.) country(A country code string.) Gets the annotation content for this ultralink for a given language and country bias if any. */
+        /* GROUP(Annotation) language(A language code string.) country(A country code string.) Gets the annotation content for this Ultralink for a given language and country bias if any. */
         public string annotation( string language = "", string country = "" ){ return APICallSub("/annotation", new JObject{ ["language"] = language, ["country"] = country }, "Could not retrieve annotation for " + description()).ToString(); }
 
-        /* GROUP(Annotation) text(Annotation text.) type(The type of content being stored.) language(A language code string.) country(A country code string.) Sets the annotation data for this ultralink to <b>text</b> on <b>langauge</b> and <b>country</b>. */
+        /* GROUP(Annotation) text(Annotation text.) type(The type of content being stored.) language(A language code string.) country(A country code string.) Sets the annotation data for this Ultralink to <b>text</b> on <b>langauge</b> and <b>country</b>. */
         public bool setAnnotation( string text, string type = "text", string language = "", string country = "" ){ if (APICall(new JObject { ["set"] = text, ["type"] = type, ["language"] = language, ["country"] = country }, "Could not insert/update annotation for " + description()) != null) { return true; } return false; }
 
         /* GROUP(Holding Tank) word(A word string.) caseSensitive(Boolean. 1 indicates that this Word is case sensitive.) resolution(The decision string whether to <b>accept</b> or <b>reject</b> the submitted word.) contributor(<user identifier>) Removes the submission entry for the new word. If the resolution is 'accept' then it adds the word. */
@@ -1190,25 +1190,25 @@ namespace UL
         /* GROUP(Holding Tank) urlID(A URL ID) type(A link type.) problem(The problem of the above URL.) contributor(<user identifier>) Removes a submitted link from the holding tank or a specific type, problem type and contributor. */
         public bool dismissReportedLink( string urlID, string type, string problem, string contributor ){ if (APICall(new JObject {["dismissReportedLink"] = urlID,["type"] = type,["problem"] = problem,["contributor"] = contributor }, "Couldn't remove the reported link (urlID: " + urlID + ", type: " + type + ", problem: " + problem + ")") != null) { return true; } return false; }
 
-        /* GROUP(Holding Tank) con_ID(An ID for a connected ultralink.) problem(The problem with the connection.) Adds a connection complaint into the holding tank for this ultralink. */
+        /* GROUP(Holding Tank) con_ID(An ID for a connected Ultralink.) problem(The problem with the connection.) Adds a connection complaint into the holding tank for this Ultralink. */
         public bool reportConnection( string con_ID, string problem ){ if (APICall(new JObject {["reportConnection"] = con_ID,["problem"] = problem }, "Could not enter in connection report description_ID: " + description() + ", con_ID: " + con_ID + ", problem: " + problem) != null) { return true; } return false; }
 
-        /* GROUP(Holding Tank) url_ID(A URL ID) type(A link type.) problem(The problem of the above URL.) Adds a link complaint into the holding tank for this ultralink. */
+        /* GROUP(Holding Tank) url_ID(A URL ID) type(A link type.) problem(The problem of the above URL.) Adds a link complaint into the holding tank for this Ultralink. */
         public bool reportLink( string url_ID, string type, string problem ){ if (APICall(new JObject {["reportLink"] = url_ID,["type"] = type,["problem"] = problem }, "Could not enter in link report description_ID: " + description() + ", url_ID: " + url_ID + ", type: " + type + ", problem: " + problem) != null) { return true; } return false; }
 
-        /* GROUP(Holding Tank) category(A category string.) Adds a category into the holding tank for this ultralink. */
-        public bool submitCategory( string category ){ if (APICall(new JObject {["submitCategory"] = category }, "Could not enter in submitted category " + category + " ultralink: " + description()) != null) { return true; } return false; }
+        /* GROUP(Holding Tank) category(A category string.) Adds a category into the holding tank for this Ultralink. */
+        public bool submitCategory( string category ){ if (APICall(new JObject {["submitCategory"] = category }, "Could not enter in submitted category " + category + " Ultralink: " + description()) != null) { return true; } return false; }
 
-        /* GROUP(Holding Tank) connection(A connection type string.) connection_ID(The ID of another ultralink to connect to.) Adds a connection into the holding tank for this ultralink. */
-        public bool submitConnection( string connection, string connection_ID ){ if (APICall(new JObject {["submitConnection"] = connection,["connection_ID"] = connection_ID }, "Could not enter in submitted connection " + connection + " ultralink: " + description() + " connection_ID: " + connection_ID) != null) { return true; } return false; }
+        /* GROUP(Holding Tank) connection(A connection type string.) connection_ID(The ID of another Ultralink to connect to.) Adds a connection into the holding tank for this Ultralink. */
+        public bool submitConnection( string connection, string connection_ID ){ if (APICall(new JObject {["submitConnection"] = connection,["connection_ID"] = connection_ID }, "Could not enter in submitted connection " + connection + " Ultralink: " + description() + " connection_ID: " + connection_ID) != null) { return true; } return false; }
 
-        /* GROUP(Holding Tank) URL(A URL string.) type(A link type.) Adds a link into the holding tank for this ultralink. */
-        public bool submitLink( string URL, string type ){ if (APICall(new JObject {["submitLink"] = URL,["type"] = type }, "Could not enter in submitted link ultralink: " + description() + ", URL: " + URL + ", type: " + type) != null) { return true; } return false; }
+        /* GROUP(Holding Tank) URL(A URL string.) type(A link type.) Adds a link into the holding tank for this Ultralink. */
+        public bool submitLink( string URL, string type ){ if (APICall(new JObject {["submitLink"] = URL,["type"] = type }, "Could not enter in submitted link Ultralink: " + description() + ", URL: " + URL + ", type: " + type) != null) { return true; } return false; }
 
-        /* GROUP(Holding Tank) word(A word string.) caseSensitive(Boolean. 1 indicates that this Word is case sensitive.) Adds a word into the holding tank for this ultralink. */
-        public bool submitWord( string word, string caseSensitive ){ if (APICall(new JObject {["submitWord"] = word,["caseSensitive"] = caseSensitive }, "Could not enter in submitted words ultralink: " + description() + ", word: " + word + ", caseSensitive: " + caseSensitive) != null) { return true; } return false; }
+        /* GROUP(Holding Tank) word(A word string.) caseSensitive(Boolean. 1 indicates that this Word is case sensitive.) Adds a word into the holding tank for this Ultralink. */
+        public bool submitWord( string word, string caseSensitive ){ if (APICall(new JObject {["submitWord"] = word,["caseSensitive"] = caseSensitive }, "Could not enter in submitted words Ultralink: " + description() + ", word: " + word + ", caseSensitive: " + caseSensitive) != null) { return true; } return false; }
 
-        /* GROUP(Holding Tank) pageURL(A URL that this ultralink needs a bias on.) feedback(A non-zero feedback number.) Adds a page feedback value for the specified page into the holding tank for this ultralink. */
+        /* GROUP(Holding Tank) pageURL(A URL that this Ultralink needs a bias on.) feedback(A non-zero feedback number.) Adds a page feedback value for the specified page into the holding tank for this Ultralink. */
         public bool submitPageFeedback( string pageURL, string feedback ){ if (APICall(new JObject {["submitPageFeedback"] = pageURL,["feedback"] = feedback }, "Could not enter in submitted page feedback " + description() + " " + pageURL + " " + feedback) != null) { return true; } return false; }
 
         public object APICallSub( string sub, object fields, string error )

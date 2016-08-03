@@ -22,7 +22,7 @@ namespace UL
 
         public bool dirty = false;
 
-        /* GROUP(Class Functions) ul(Ultralink) Returns an array of links for the ultralink <b>ul</b>. */
+        /* GROUP(Class Functions) ul(Ultralink) Returns an array of links for the Ultralink <b>ul</b>. */
         public static List<PageFeedback> getPageFeedback( Ultralink ul )
         {
             List<PageFeedback> thePageFeedback = new List<PageFeedback>();
@@ -37,7 +37,7 @@ namespace UL
             return thePageFeedback;
         }
 
-        /* GROUP(Class Functions) theUL(Ultralink) thePageID(A page ID.) theWord(A string of the word that the feedback is on.) theFeedback(A feedback number.) Creates a page feedback for ultralink <b>theUL</b>. */
+        /* GROUP(Class Functions) theUL(Ultralink) thePageID(A page ID.) theWord(A string of the word that the feedback is on.) theFeedback(A feedback number.) Creates a page feedback for Ultralink <b>theUL</b>. */
         public static PageFeedback PF( Ultralink theUL, string thePageID, string theWord, string theFeedback = null )
         {
             PageFeedback pf = new PageFeedback();
